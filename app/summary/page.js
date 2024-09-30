@@ -6,8 +6,14 @@ export default function Summary() {
 
   useEffect(() => {
     fetch('/api/transactions/summary')
-      .then((res) => res.json())
-      .then((data) => setSummary(data));
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch summary');
+        }
+        return res.json();
+      })
+      .then((data) => setSummary(data))
+      .catch((error) => console.error(error)); // log errors
   }, []);
 
   return (
