@@ -13,7 +13,7 @@ export default function Summary() {
         return res.json();
       })
       .then((data) => setSummary(data))
-      .catch((error) => console.error(error)); // log errors
+      .catch((error) => console.error(error));
   }, []);
 
   return (
